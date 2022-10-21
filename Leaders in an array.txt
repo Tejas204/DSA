@@ -1,0 +1,16 @@
+class Solution:
+    #Back-end complete function Template for Python 3
+    
+    #Function to find the leaders in the array.
+    def leaders(self, A, N):
+        #Code here
+        
+        ans = []
+        ans.append(A[N-1])
+        top = 0
+        for i in range(N-2, -1, -1):
+            if ans[top]<=A[i]:
+                ans.append(A[i])
+                top+=1
+                
+        return ans[::-1]

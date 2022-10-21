@@ -1,0 +1,41 @@
+class Solution:
+    # Complete this function
+    
+    #Function to find equilibrium point in the array.
+    def equilibriumPoint(self,A, N):
+        # Your code here
+        flag = 0
+        #if N==1:
+        #    return 1
+        #elif N==2:
+        #    return -1
+        #else:
+        #    for i in range(1, N):
+        #        if sum(A[0:i])==sum(A[i+1:]):
+        #            flag = 1
+        #            return i+1
+        #if flag==0:
+        #    return -1
+        
+        mid = N//2
+        leftsum = 0
+        rightsum = 0
+        
+        leftsum = sum(A[:mid])
+        rightsum = sum(A[mid+1:])
+        
+        if rightsum>leftsum:
+            while rightsum>leftsum and mid<N-1:
+                rightsum-=A[mid+1]
+                leftsum+=A[mid]
+                mid+=1
+        else:
+            while leftsum>rightsum and mid>0:
+                rightsum+=A[mid]
+                leftsum-=A[mid-1]
+                mid-=1
+        
+        if rightsum==leftsum:
+            return mid+1
+        
+        return -1

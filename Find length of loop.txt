@@ -1,0 +1,40 @@
+class Solution
+{
+    //Function to find the length of a loop in the linked list.
+    static int countNodesinLoop(Node head)
+    {
+        //Add your code here.
+        //Declare hashmap ----
+        Node curr = head;
+        Node start = head;
+        Node end = head;
+        int count = 0;
+        
+        while (curr.next!=null){
+            if (!(curr.next.data<0)){
+                 curr.data = -(curr.data);
+                curr = curr.next;
+            }
+            else{
+                break;
+            }
+        }
+        
+        if (curr.next==null){
+            return count;
+        }
+        else{
+            end = curr;
+            start = curr.next;
+        }
+        
+        while (start!=end){
+            count++;
+            start = start.next;
+        }
+        return count+1;
+        
+        
+         
+    }
+}
